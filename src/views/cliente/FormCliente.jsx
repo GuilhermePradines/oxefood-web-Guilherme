@@ -39,10 +39,10 @@ export default function FormCliente () {
 		    foneFixo: foneFixo
 		}
 
-        if (idCliente != null) { //Alteração:
+        if (idCliente != null) { 
            axios.put("http://localhost:8080/api/cliente/" + idCliente, clienteRequest)
            .then((response) => { notifySuccess('Cliente cadastrado com sucesso.') })
-           .catch((error) => { if (error.response.data.errors != undefined) {
+           .catch((error) => { if (error.response.data.errors !== undefined) {
        		for (let i = 0; i < error.response.data.errors.length; i++) {
 	       		notifyError(error.response.data.errors[i].defaultMessage)
 	    	}
@@ -50,10 +50,10 @@ export default function FormCliente () {
 		notifyError(error.response.data.message)
 	}
  })
-       } else { //Cadastro:
+       } else { 
            axios.post("http://localhost:8080/api/cliente", clienteRequest)
            .then((response) => { notifySuccess('Cliente cadastrado com sucesso.') })
-           .catch((error) => {if (error.response.data.errors != undefined) {
+           .catch((error) => {if (error.response.data.errors !== undefined) {
        		for (let i = 0; i < error.response.data.errors.length; i++) {
 	       		notifyError(error.response.data.errors[i].defaultMessage)
 	    	}
